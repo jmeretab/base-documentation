@@ -1,8 +1,7 @@
-## Base Documentation
+## GoodHire API documentation
 
-Basic styles and javascript needed for documenting code on desktop and mobile
+Documentation for the GoodHire API
 
-*Just fork this to get started. No extra build overhead.*
 
 ### Dependencies/Credits
 
