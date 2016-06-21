@@ -6,9 +6,17 @@
   height: 45px;
   padding: 10px;
   border-bottom: 1px solid #eef1f3;
-  background-color: #ffffff;
+  background-color: #283041;
+  color: #ffffff;
   z-index: 500;
 }
+
+.doc-sidebar-header{
+  font-size: 1.8rem;
+  font-weight: bold;
+  padding: 0 20px; 
+}
+
 
 @media (min-width: 768px){
   .doc-sidebar{
@@ -82,13 +90,13 @@
 
 .doc-navigation a:link,
 .doc-navigation a:visited{
-  color: #58585b;
+  color: #ffffff;
 }
 
 .doc-navigation a:hover,
 .doc-navigation a:focus,
 .doc-navigation a:active{
-  color: #2cbec3;
+  color: #82c146;
 }
 
 .doc-navigation > li > a{
@@ -100,7 +108,7 @@
 }
 
 .doc-navigation .active{
-  background-color: #2cbec3;
+  background-color: #82c146;
 }
 
 .doc-navigation .active:link,
@@ -189,6 +197,7 @@
 
 
 .doc-content{
+
   overflow-x: hidden;
   overflow-y: auto;
   z-index: 1;
@@ -403,7 +412,7 @@
 .doc-code samp,
 .doc-code kbd{
   background-color: #2F353A;
-  color: #00fcd4;
+  color: #fFFFFF;
   border: none;
 }
 
@@ -455,7 +464,7 @@
 .doc-code .prettyprint .str,
 .doc-code .prettyprint .typ,
 .doc-code .prettyprint .atv{
-  color: #00fcd4;
+  color: #ffffff;
 }
 
 .doc-code .prettyprint .kwd,
@@ -484,10 +493,10 @@ table th{
 
 .cell--parameter{
   font-family: monospace;
-  color: #bc3545;
+  color: #3c3c3d;
 }
 
 .cell--error_code{
   font-weight: bold;
-  color: #2cbec3;
+  color: #3c3c3d;
 }

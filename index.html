@@ -10,7 +10,7 @@
 <body>
 
   <div class="doc-sidebar">
-  	<h1 class="logo">Logo</h1>
+  	<img class="logo" src="img/logo2.png"><!-- <h1>class="logo">Logo</h1> -->
 	  <ul class="doc-navigation">
 	    <li>
 	      <a href="#overview">Overview</a>
@@ -27,6 +27,23 @@
 	    <li>
 	      <a href="#check-types">Check Types</a>
 	    </li>
+	    <li>
+	      <a href="#test-data">Test Data</a>
+	    </li>
+	    <li>
+	      <a href="#response-codes">Response Codes</a>
+	    </li>
+	  </ul>
+	  <h3 class="doc-sidebar-header">Resources</h3>
+	  <ul class="doc-navigation">
+	  	<li>
+	      <a href="#report-order">Report Order</a>
+	      <ul>
+	        <li>
+	        	<a href="#create-a-report-order">Create a report order</a>
+	        </li>
+	      </ul>
+	    </li>
 	  </ul>
 
 	  <form class="doc-mobile-navigation js-doc-mobile-navigation">
@@ -36,6 +53,10 @@
         <option value="authentication">Authentication</option>
         <option value="webhooks">Webhooks</option>
         <option value="check-types">Check Types</option>
+        <option value="test-data">Test Data</option>
+        <option value="response-codes">Response Codes</option>
+        <option value="report-order">Report Order</option>
+        <option value="create-report-order">Report Order</option>
       </select>
 	  </form>
 	</div>
@@ -66,10 +87,6 @@
 				<p>The test endpoint can be used while you are building your application, and all background reports ordered via its methods will return dummy data. When you are ready to begin ordering real background reports, change your base endpoint to the production endpoint above and contact <a href="mailto:api@goodhire.com">api@goodhire.com</a> to receive a production API key.</p>
 			  </div>
 
-			  <!-- doc-code is what shows up on the white background -->
-			  <div class="doc-code">
-			    <p>Code ends up over here.</p>
-			  </div>
 			</div>
 	</section>
 	<!-- this is the actual meat of the code -->
@@ -360,6 +377,406 @@ https://api-pre.goodhire.com/v1/</samp></pre>
 			      </tr>
 		    </table>
 		  </div>
+		</div>
+	</section>
+	<section class="doc-section js-scrollspy" data-scrollspy="response-codes">
+	  <a name="response-codes"></a>
+	  <h2>Response Codes</h2>
+
+	  <div class="doc-group">
+
+		  <div class="doc-description">
+		  	<p>The GoodHire API uses HTTP status codes to indicate the success or failure of API requests. 2xx codes indicate that the request was processed successfully, while 4xx codes indicate an error. Below is a list of status codes returned by the API:</p>
+		  	<table class="table--striped">
+	  	    	<thead>
+			        <tr>
+			          <th>Code</th>
+			          <th>Description</th>
+			        </tr>
+			      </thead>
+			      <tr>
+			        <td class="cell--error_code">200</td>
+			        <td>Ok - Successful request</td>
+			      </tr>
+			      <tr>
+			        <td class="cell--error_code">201</td>
+			        <td>Created - Resource was created succesfully</td>
+			      </tr>
+			      <tr>
+			        <td class="cell--error_code">400</td>
+			        <td>Bad Request - Invalid parameter or argument</td>
+			      </tr>
+			      <tr>
+			        <td class="cell--error_code">401</td>
+			        <td>Unauthorized - Invalid API key</td>
+			      </tr>
+			      <tr>
+			        <td class="cell--error_code">404</td>
+			        <td>Not Found - Resource not found</td>
+			      </tr>
+			      <tr>
+			        <td class="cell--error_code">500</td>
+			        <td>Internal Server Error - Something went wrong on our side.</td>
+			      </tr>
+			    </table>
+		  </div>
+		</div>
+	</section>
+	<section class="doc-section js-scrollspy" data-scrollspy="report-order">
+	  <a name="report-order"></a>
+	  <h2>Report Order</h2>
+	  <div class="doc-group">
+
+		  <div class="doc-description">
+		  	<p>A report order represents a background report to be run on a specific candidate.</p>
+		  	<h4>Attributes:</h4>
+			  	<table class="table--bordered">
+			      <thead>
+			        <tr>
+			          <th>Name</th>
+			          <th>Format</th>
+			          <th>Description</th>
+			        </tr>
+			      </thead>
+			      <tr>
+			        <td class="cell--parameter">id</td>
+			        <td>string</td>
+			        <td>Unique identifier for the report order</td>
+			      </tr>
+			      <tr>
+			        <td class="cell--parameter">candidate</td>
+			        <td>object</td>
+			        <td>See <a href="#candidate">candidate</a> object</td>
+			      </tr>
+			      <tr>
+			        <td class="cell--parameter">offer</td>
+			        <td>object</td>
+			        <td>See <a href="#offer">offer</a> object</td>
+			      </tr>
+			    </table>
+			</div>
+			<div class="doc-code">
+<pre class="prettyprint"><samp>{ 
+    "id": "2930ed9b-394b-4ca9-9aeb-1aa08b695ffa",
+    "candidate":{
+        "firstName": "Test",
+        "lastName": "Candidate",
+        "email": "candidate@example.com"
+    },
+    "offer":{
+        "products": ["RPT_BASIC"]
+    },
+    "requestOptions":{
+        "sendPurchaseReceipt": true
+    }
+}</samp></pre>
+		  </div>
+		</div>
+		<div class="doc-group">
+
+		  <div class="doc-description">
+		  	<a name="candidate"></a>
+		  	<h5>Candidate:</h5>
+			  	<table class="table--bordered">
+			      <thead>
+			        <tr>
+			          <th>Name</th>
+			          <th>Format</th>
+			          <th>Description</th>
+			        </tr>
+			      </thead>
+			      <tr>
+			        <td class="cell--parameter">firstName</td>
+			        <td>string</td>
+			        <td></td>
+			      </tr>
+			      <tr>
+			        <td class="cell--parameter">lastName</td>
+			        <td>string</td>
+			        <td></td>
+			      </tr>
+			      <tr>
+			        <td class="cell--parameter">email</td>
+			        <td>string</td>
+			        <td></td>
+			      </tr>
+			      <tr>
+			        <td class="cell--parameter">dateOfBirth</td>
+			        <td>string</td>
+			        <td>In YYYY-MM-DD format</td>
+			      </tr>
+			      <tr>
+			        <td class="cell--parameter">ssn</td>
+			        <td>string</td>
+			        <td>Social security number (with or without dashes)</td>
+			      </tr>
+			      <tr>
+			        <td class="cell--parameter">address</td>
+			        <td>string</td>
+			        <td>Street address</td>
+			      </tr>
+			      <tr>
+			        <td class="cell--parameter">city</td>
+			        <td>string</td>
+			        <td></td>
+			      </tr>
+			      <tr>
+			        <td class="cell--parameter">state</td>
+			        <td>string</td>
+			        <td>2-letter state abbreviation</td>
+			      </tr>
+			      <tr>
+			        <td class="cell--parameter">zip</td>
+			        <td>string</td>
+			        <td>5 or 5+4 zip</td>
+			      </tr>
+			      <tr>
+			        <td class="cell--parameter">candidateDriverRecords</td>
+			        <td>array of objects</td>
+			        <td>See <a href="#candidate-driver-records">candidate driver records</a> object</td>
+			      </tr>
+			    </table>
+			</div>
+			<div class="doc-code">
+<pre class="prettyprint"><samp>{
+    "firstName": "Test",
+    "lastName": "Candidate",
+    "email": "candidate@example.com"
+}</samp></pre>
+		  </div>
+		</div>
+		<div class="doc-group">
+			<div class="doc-description">
+			  	<a name="candidate-driver-records"></a>
+			  	<h5>Candidate Driver Records:</h5>
+				  	<table class="table--bordered">
+				      <thead>
+				        <tr>
+				          <th>Name</th>
+				          <th>Format</th>
+				          <th>Description</th>
+				        </tr>
+				      </thead>
+				      <tr>
+				        <td class="cell--parameter">driverLicenseNum</td>
+				        <td>string</td>
+				        <td>License number</td>
+				      </tr>
+				      <tr>
+				        <td class="cell--parameter">driverLicenseState</td>
+				        <td>string</td>
+				        <td>2-letter state abbreviation</td>
+				      </tr>
+				    </table>
+				</div>
+			<div class="doc-code">
+<pre class="prettyprint"><samp>{
+    "driverLicenseNum": "B53455687",
+    "driverLicenseState": "FL"
+}</samp></pre>
+		  </div>
+		</div>
+		<div class="doc-group">
+			<div class="doc-description">
+			  	<a name="offer"></a>
+			  	<h5>Offer:</h5>
+				  	<table class="table--bordered">
+				      <thead>
+				        <tr>
+				          <th>Name</th>
+				          <th>Format</th>
+				          <th>Description</th>
+				        </tr>
+				      </thead>
+				      <tr>
+				        <td class="cell--parameter">products</td>
+				        <td>array</td>
+				        <td>Array of products being purchased. See <a href="#check-types">Check Types</a>.</td>
+				      </tr>
+				    </table>
+				</div>
+				<div class="doc-code">
+<pre class="prettyprint"><samp>{
+    "products": ["RPT_BASIC","CHK_MVR"]
+}</samp></pre>
+			</div>
+		</div>
+	</section>
+	<section class="doc-section js-scrollspy" data-scrollspy="create-a-report-order">
+	  <a name="create-a-report-order"></a>
+	  <h3>Create a report order</h3>
+
+	  <div class="doc-group">
+
+		  <div class="doc-description">
+		  	<p>This endpoint is used to order a background report on the supplied candidate. The API will email the candidate with a link to provide consent to the background report and to confirm his or her information.</p>
+		  	<code class="code-block">POST https://api-pre.goodhire.com/v1/report</code>
+		<h4>Request Body Parameters:</h4>
+		<table class="table--bordered">
+			      <thead>
+			        <tr>
+			          <th>Name</th>
+			          <th>Required</th>
+			          <th>Format</th>
+			          <th>Description</th>
+			        </tr>
+			      </thead>
+			      <tr>
+			        <td class="cell--parameter">candidate</td>
+			        <td>✓</td>
+			        <td>object</td>
+			        <td>See <a href="#candidate">candidate</a> object</td>
+			      </tr>
+			      <tr>
+			        <td class="cell--parameter">offer</td>
+			        <td>✓</td>
+			        <td>object</td>
+			        <td>See <a href="#offer">offer</a> object</td>
+			      </tr>
+			    </table>
+		  </div>
+		  <div class="doc-code">
+<pre class="prettyprint"><samp>curl -i -X POST \
+-H "Authorization: ApiKey YOUR_API_KEY" \
+-H "Content-Type: application/json" \
+https://api-pre.goodhire.com/v1/Report \
+-d '{ 
+    "candidate":{
+        "firstName": "Test",
+        "lastName": "Candidate",
+        "email": "EXAMPLE_EMAIL"
+    },
+    "offer":{
+        "products": ["RPT_BASIC"]
+    }
+}'</samp></pre>
+		  </div>
+		</div>
+		<div class="doc-group">
+
+		  <div class="doc-description">
+		  	<h5>Candidate:</h5>
+			  	<table class="table--bordered">
+			      <thead>
+			        <tr>
+			          <th>Name</th>
+			          <th>Required</th>
+			          <th>Format</th>
+			          <th>Description</th>
+			        </tr>
+			      </thead>
+			      <tr>
+			        <td class="cell--parameter">firstName</td>
+			        <td>✓</td>
+			        <td>string</td>
+			        <td></td>
+			      </tr>
+			      <tr>
+			        <td class="cell--parameter">lastName</td>
+			        <td>✓</td>
+			        <td>string</td>
+			        <td></td>
+			      </tr>
+			      <tr>
+			        <td class="cell--parameter">email</td>
+			        <td>✓</td>
+			        <td>string</td>
+			        <td></td>
+			      </tr>
+			      <tr>
+			        <td class="cell--parameter">dateOfBirth</td>
+			        <td></td>
+			        <td>string</td>
+			        <td>In YYYY-MM-DD format</td>
+			      </tr>
+			      <tr>
+			        <td class="cell--parameter">ssn</td>
+			        <td></td>
+			        <td>string</td>
+			        <td>Social security number (with or without dashes)</td>
+			      </tr>
+			      <tr>
+			        <td class="cell--parameter">address</td>
+			        <td></td>
+			        <td>string</td>
+			        <td>Street address</td>
+			      </tr>
+			      <tr>
+			        <td class="cell--parameter">city</td>
+			        <td></td>
+			        <td>string</td>
+			        <td></td>
+			      </tr>
+			      <tr>
+			        <td class="cell--parameter">state</td>
+			        <td></td>
+			        <td>string</td>
+			        <td>2-letter state abbreviation</td>
+			      </tr>
+			      <tr>
+			        <td class="cell--parameter">zip</td>
+			        <td></td>
+			        <td>string</td>
+			        <td>5 or 5+4 zip</td>
+			      </tr>
+			      <tr>
+			        <td class="cell--parameter">candidateDriverRecords</td>
+			        <td></td>
+			        <td>array of objects</td>
+			        <td>See <a href="#candidate-driver-records">candidate driver records</a> object</td>
+			      </tr>
+			    </table>
+			</div>
+		</div>
+		<div class="doc-group">
+
+		  <div class="doc-description">
+		  	<h5>Candidate Driver Records:</h5>
+			  	<table class="table--bordered">
+			      <thead>
+			        <tr>
+			          <th>Name</th>
+			          <th>Required</th>
+			          <th>Format</th>
+			          <th>Description</th>
+			        </tr>
+			      </thead>
+			      <tr>
+			        <td class="cell--parameter">driverLicenseNum</td>
+			        <td></td>
+			        <td>string</td>
+			        <td>License number</td>
+			      </tr>
+			      <tr>
+			        <td class="cell--parameter">driverLicenseState</td>
+			        <td></td>
+			        <td>string</td>
+			        <td>2-letter state abbreviation</td>
+			      </tr>
+			    </table>
+			</div>
+		</div>
+		<div class="doc-group">
+
+		  <div class="doc-description">
+		  	<h5>Offer:</h5>
+			  	<table class="table--bordered">
+			      <thead>
+			        <tr>
+			          <th>Name</th>
+			          <th>Required</th>
+			          <th>Format</th>
+			          <th>Description</th>
+			        </tr>
+			      </thead>
+			      <tr>
+			        <td class="cell--parameter">products</td>
+			        <td>✓</td>
+			        <td>string</td>
+			        <td>Array of products being purchased. See <a href="#check-types">Check Types</a></td>
+			      </tr>
+			    </table>
+			</div>
 		</div>
 	</section>
 
