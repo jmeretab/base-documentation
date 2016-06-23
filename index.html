@@ -10,7 +10,7 @@
 <body>
 
   <div class="doc-sidebar">
-  	<img class="logo" src="img/logo2.png"><!-- <h1>class="logo">Logo</h1> -->
+  	<div class="logo"><img src="img/logo2.png"></div><!-- <h1>class="logo">Logo</h1> -->
 	  <ul class="doc-navigation">
 	    <li>
 	      <a href="#overview">Overview</a>
@@ -44,6 +44,14 @@
 	        </li>
 	      </ul>
 	    </li>
+	    <li>
+	      <a href="#report-status">Report Status</a>
+	      <ul>
+	        <li>
+	        	<a href="#retrieve-a-report-status">Retrieve a report status</a>
+	        </li>
+	      </ul>
+	    </li>
 	  </ul>
 
 	  <form class="doc-mobile-navigation js-doc-mobile-navigation">
@@ -57,6 +65,7 @@
         <option value="response-codes">Response Codes</option>
         <option value="report-order">Report Order</option>
         <option value="create-report-order">Report Order</option>
+        <option value="report-status">Report Status</option>
       </select>
 	  </form>
 	</div>
@@ -777,6 +786,98 @@ https://api-pre.goodhire.com/v1/Report \
 			      </tr>
 			    </table>
 			</div>
+		</div>
+	</section>
+	<section class="doc-section js-scrollspy" data-scrollspy="report-status">
+	  <a name="report-status"></a>
+	  <h2>Report Status</h2>
+
+	  <div class="doc-group">
+
+		  <div class="doc-description">
+		  	<p>The report status represents the current status of a background check that has been ordered via the creation of a <a href="#report-order">report order</a> object.</p>
+		  	<h4>Attributes:</h4>
+			  	<table class="table--bordered">
+			      <thead>
+			        <tr>
+			          <th>Name</th>
+			          <th>Format</th>
+			          <th>Description</th>
+			        </tr>
+			      </thead>
+			      <tr>
+			        <td class="cell--parameter">id</td>
+			        <td>string</td>
+			        <td>Unique identifier for the ordered background check. Same as the <a href="#report-order">report order</a> id.</td>
+			      </tr>
+			      <tr>
+			        <td class="cell--parameter">status</td>
+			        <td>string</td>
+			        <td>The current status of the ordered report on GoodHire. It can take one of the following values:
+			        	<ul>
+			        		<li><em>New</em> - The check has been ordered and is waiting to be processed.</li>
+			        		<li><em>RequiresAdditionalInfo</em> - The check is waiting on input from the candidate or GoodHire member services.</li>
+			        		<li><em>MissingInput</em> - You must provide additional candidate info for the report to run.</li>
+			        		<li><em>Processing</em> - The check is currently running.</li>
+			        		<li><em>CompletedAlert</em> - The check completed and contains alerts that require review.</li>
+			        		<li><em>CompletedClear</em> - The check completed and all sections are clear.</li>
+			        	</ul>
+			        </td>
+			      </tr>
+			      <tr>
+			        <td class="cell--parameter">reportViewerUrl</td>
+			        <td>string</td>
+			        <td>A link to view the full check on GoodHire.com</td>
+			      </tr>
+			      <tr>
+			        <td class="cell--parameter">sectionsContainingAlerts</td>
+			        <td>array of </br> strings</td>
+			        <td>A link to view the full check on GoodHire.com</td>
+			      </tr>
+			    </table>
+		  </div>
+		  <div class="doc-code">
+<pre class="prettyprint"><samp>{
+  "Status":"MissingInput",
+  "SectionsContainingAlerts":[],
+  "ReportViewerUrl":"https://staging.goodhire.com/member/?_act=candidateReportAPI&_cndid=7412",
+}</samp></pre>
+		  </div>
+		</div>
+	</section>
+	<section class="doc-section js-scrollspy" data-scrollspy="retrieve-a-report-status">
+	  <a name="retrieve-a-report-status"></a>
+	  <h3>Retrieve a report status</h3>
+	  <div class="doc-group">
+
+		  <div class="doc-description">
+		  	<p>This endpoint retrieves the status of a <a href="#report-order">report order</a> and returns a <a href="#report-status">report status</a>.</p>
+		  	<code class="code-block">GET https://api-pre.goodhire.com/v1/report/<b><em>id</em></b></code>
+		  	<h4>URL Parameters:</h4>
+					<table class="table--bordered">
+			      <thead>
+			        <tr>
+			          <th>Name</th>
+			          <th>Required</th>
+			          <th>Format</th>
+			          <th>Description</th>
+			        </tr>
+			      </thead>
+			      <tr>
+			        <td class="cell--parameter">id</td>
+			        <td>✓</td>
+			        <td>object</td>
+			        <td>The id of the <a href="#report-order">report order</a> to retrieve the status of</td>
+			      </tr>
+			    </table>
+		  </div>
+		  <div class="doc-code">
+<pre class="prettyprint"><samp>{
+  "Status":"MissingInput",
+  "SectionsContainingAlerts":[],
+  "ReportViewerUrl":"https://staging.goodhire.com/member/?_act=candidateReportAPI&_cndid=7412",
+}</samp></pre>
+		  </div>
 		</div>
 	</section>
 

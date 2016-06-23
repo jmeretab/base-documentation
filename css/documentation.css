@@ -12,9 +12,15 @@
 }
 
 .doc-sidebar-header{
+  display: none; 
   font-size: 1.8rem;
   font-weight: bold;
-  padding: 0 20px; 
+  padding: 0 20px;
+}
+@media (min-width: 1200px){
+  .doc-sidebar-header{
+    display: block;
+  }
 }
 
 
@@ -471,7 +477,10 @@
 .doc-code .prettyprint .tag{
   color: #c4c9ce;
 }
-
+/* Make table font smaller, since we've got some really long field names*/
+table {
+  font-size: 1.3rem;
+}
 
 table th{
   border-bottom: 1px solid #dadfe2;
