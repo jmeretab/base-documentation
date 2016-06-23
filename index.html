@@ -87,7 +87,7 @@
 
 		  	<!-- doc-description is what shows up on the white background -->
 			  <div class="doc-description">
-			    <p>The GoodHire API is a web service that allows partners to order employment background reports on job candidates and view the results of these ordered reports. The API is accessed via HTTPS, and resources are operated upon using the GET and POST methods.</p>
+			    <p>The GoodHire API is a web service that allows customers to order employment background reports on job candidates and view the results of these ordered reports. The API is accessed via HTTPS, and resources are operated upon using the GET and POST methods.</p>
 				<p>There are two base endpoints for the API that all methods are appended to:</p>
 				<p>Test Endpoint:</p>
 				<code class="code-block">https://api-pre.goodhire.com/v1/</code>
@@ -108,7 +108,7 @@
 
 		  	<!-- doc-description is what shows up on the white background -->
 			  <div class="doc-description">
-			    <p>Below is the process for setting up a staging API account and ordering a test background check:</p>
+			    <p>Below is the process for setting up an API account and ordering a test background check:</p>
 				<ol>
 					<li>Create a developer account</li>
 					<li>Create a report</li>
@@ -199,7 +199,7 @@ https://api-pre.goodhire.com/v1/Report/REPORT_ID</samp></pre>
 	  <div class="doc-group">
 	  	<div class="doc-description">
 	  		<h4>Response:</h4>
-	  		<p>The API will return a <b>HTTP 200 Ok</b> and a <a href="#report-status">report status</a> object with information on the GoodHire background report tied to the report order you created. The report status contains the current status of your background report (Processing, MissingInfo, CompletedClear, etc.), a description of actions (if any) required for the report to run, and a URL to view the complete report on GoodHire.com.</p>
+	  		<p>The API will return a <b>HTTP 200 Ok</b> and a <a href="#report-status">report status</a> object with information on the GoodHire background report tied to the report order you created. The report status contains the current status of your background report.</p>
 			    <p>If your candidate has not yet provided consent via the sent email, your response will look similar to the one on the right. Once your candidate has completed these steps, the <em>status</em> field of the response will be updated to “Processing” and then “CompletedClear” or ”CompletedAlert” depending on if any sections of the background report returned alerts.</p>
 			    <p>If you have any questions, please email: <a href="mailto:api@goodhire.com">api@goodhire.com</a></p>
 			</div>
@@ -787,6 +787,30 @@ https://api-pre.goodhire.com/v1/Report \
 			    </table>
 			</div>
 		</div>
+		<div class="doc-group">
+	  	<div class="doc-description">
+	  		<h4>Response:</h4>
+	  		<p>The API will respond with an <b>HTTP 201 Created</b> and the created report order. The <em>id</em> field in the body of the response is the unique id of your report order.</p>
+	  	</div>
+	  <div class="doc-code">
+<pre class="prettyprint"><samp>{ 
+    "id": "2930ed9b-394b-4ca9-9aeb-1aa08b695ffa", 
+    "candidate":{
+        "firstName": "Test",
+        "lastName": "Candidate",
+        "email": "YOUR_EMAIL"
+    },
+    "offer":{
+        "products": ["RPT_BASIC"]
+    },
+    "requestOptions": {
+        "SendPurchaseReceipt": true,
+        "PaymentType": "InvoiceImitation",
+        "SendSelfCompleteCandidateEmails": true
+    }
+}</samp></pre>
+			</div>
+		</div>
 	</section>
 	<section class="doc-section js-scrollspy" data-scrollspy="report-status">
 	  <a name="report-status"></a>
@@ -878,6 +902,30 @@ https://api-pre.goodhire.com/v1/Report \
   "ReportViewerUrl":"https://staging.goodhire.com/member/?_act=candidateReportAPI&_cndid=7412",
 }</samp></pre>
 		  </div>
+		</div>
+		<div class="doc-group">
+	  	<div class="doc-description">
+	  		<h4>Response:</h4>
+	  		<p>The API will respond with an <b>HTTP 200 Created</b> and the created report order. The <em>id</em> field in the body of the response is the unique id of your report order.</p>
+	  	</div>
+	  <div class="doc-code">
+<pre class="prettyprint"><samp>{ 
+    "id": "2930ed9b-394b-4ca9-9aeb-1aa08b695ffa", 
+    "candidate":{
+        "firstName": "Test",
+        "lastName": "Candidate",
+        "email": "YOUR_EMAIL"
+    },
+    "offer":{
+        "products": ["RPT_BASIC"]
+    },
+    "requestOptions": {
+        "SendPurchaseReceipt": true,
+        "PaymentType": "InvoiceImitation",
+        "SendSelfCompleteCandidateEmails": true
+    }
+}</samp></pre>
+			</div>
 		</div>
 	</section>
 
